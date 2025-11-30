@@ -23,6 +23,20 @@ public class usersController {
         return "users";
     }
 
+    @PostMapping("/add")
+    public String addUser(@RequestParam("name") String name,
+                          @RequestParam("email") String email,
+                          @RequestParam("phone") String phone,
+                          @RequestParam("membershipType") String membershipType) {
+        users newUser = new users();
+        newUser.setName(name);
+        newUser.setEmail(email);
+        newUser.setPhone(phone);
+        newUser.setMembershipType(membershipType);
+        usersService.insertUser(newUser);
+        return "redirect:/users";
+    }
+
     @GetMapping("/search")
     public String getUserByName(@RequestParam("name") String name, Model model) {
         List<users> users = usersService.getUsersByName(name);

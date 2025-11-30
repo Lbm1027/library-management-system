@@ -22,8 +22,8 @@ public class booksServiceImpl implements booksService {
     }
 
     @Override
-    public List<BooksCategoriesVO> getBooksByCategoryId(int categoryID) {
-        return booksMapper.getBooksByCategoryId(categoryID);
+    public List<BooksCategoriesVO> getBooksByCategoryName(String categoryName) {
+        return booksMapper.getBooksByCategoryName(categoryName);
     }
 
     @Override
