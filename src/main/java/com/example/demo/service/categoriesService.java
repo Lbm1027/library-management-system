@@ -8,4 +8,5 @@ public interface categoriesService {
     List<categories> getAllCategories();
     void insertCategory(categories category);
     void deleteCategory(int categoryID);
+    boolean categoryExists(int categoryID);
 }

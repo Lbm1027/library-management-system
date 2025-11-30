@@ -8,6 +8,17 @@
 <body>
 <h1>Users</h1>
 <section>
+  <h2>Add User</h2>
+  <form action="/users/add" method="post">
+    <input type="text" name="name" placeholder="Name" required />
+    <input type="email" name="email" placeholder="Email" required />
+    <input type="text" name="phone" placeholder="Phone" required />
+    <input type="text" name="membershipType" placeholder="Membership Type" required />
+    <button type="submit">Add</button>
+  </form>
+</section>
+
+<section>
   <form action="/users/search" method="get">
     <input type="text" name="name" placeholder="Enter Name to search"/>
     <button type="submit">Search</button>
