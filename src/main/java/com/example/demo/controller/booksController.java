@@ -26,8 +26,8 @@ public class booksController {
     }
 
     @GetMapping("/search")
-    public String searchBooksByCategoryId(@RequestParam("categoryID") int categoryID, Model model) {
-        List<BooksCategoriesVO> books = booksService.getBooksByCategoryId(categoryID);
+    public String searchBooksByCategoryName(@RequestParam("categoryName") String categoryName, Model model) {
+        List<BooksCategoriesVO> books = booksService.getBooksByCategoryName(categoryName);
         model.addAttribute("books", books);
         return "books";
     }
