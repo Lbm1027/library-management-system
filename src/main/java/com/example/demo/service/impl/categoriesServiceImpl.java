@@ -28,4 +28,9 @@ public class categoriesServiceImpl implements categoriesService {
     public void deleteCategory(int categoryID) {
         categoriesMapper.deleteCategory(categoryID);
     }
+
+    @Override
+    public boolean categoryExists(int categoryID) {
+        return categoriesMapper.countCategoryById(categoryID) > 0;
+    }
 }

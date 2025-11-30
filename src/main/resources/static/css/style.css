@@ -32,6 +32,7 @@ button, input[type="submit"], input[type="button"], .btn {
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
+    display: inline-block;
 }
 
 button:hover, input[type="submit"]:hover, input[type="button"]:hover, .btn:hover {
@@ -103,4 +104,27 @@ table tr:nth-child(odd) {
 
 .nav-list a:hover {
     background: #d9e6f4;
+}
+
+.error {
+    background: #fdecea;
+    border: 1px solid #f5c2c0;
+    color: #c12a22;
+    padding: 12px 14px;
+    border-radius: 4px;
+    margin: 12px 0;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.btn.secondary {
+    background-color: #6c757d;
+}
+
+.btn.secondary:hover {
+    background-color: #5a6268;
 }

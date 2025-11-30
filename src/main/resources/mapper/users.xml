@@ -15,9 +15,13 @@
         SELECT * FROM users WHERE name = #{name}
     </select>
 
+    <select id="getNextUserId" resultType="int">
+        SELECT COALESCE(MAX(UserID), 0) + 1 FROM users
+    </select>
+
     <insert id="insertUser" parameterType="com.example.demo.domain.users">
-        INSERT INTO users (name, email, phone, membershipType)
-        VALUES (#{name}, #{email}, #{phone}, #{membershipType})
+        INSERT INTO users (UserID, Name, Email, Phone, MembershipType)
+        VALUES (#{userID}, #{name}, #{email}, #{phone}, #{membershipType})
     </insert>
 
     <update id="updateUser" parameterType="com.example.demo.domain.users">

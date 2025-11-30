@@ -28,7 +28,9 @@ public class usersController {
                           @RequestParam("email") String email,
                           @RequestParam("phone") String phone,
                           @RequestParam("membershipType") String membershipType) {
+        int nextUserId = usersService.getNextUserId();
         users newUser = new users();
+        newUser.setUserID(nextUserId);
         newUser.setName(name);
         newUser.setEmail(email);
         newUser.setPhone(phone);
