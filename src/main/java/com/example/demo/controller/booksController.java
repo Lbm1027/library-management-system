@@ -52,7 +52,7 @@ public class booksController {
 
     @GetMapping("/add")
     public String insertBook() {
-        return "/addBook";
+        return "addBook";
     }
 }
 

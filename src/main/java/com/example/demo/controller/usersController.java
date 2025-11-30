@@ -17,14 +17,16 @@ public class usersController {
     private usersService usersService;
 
     @GetMapping
-    public String searchPage() {
+    public String searchPage(Model model) {
+        List<users> users = usersService.getAllUsers();
+        model.addAttribute("users", users);
         return "users";
     }
 
     @GetMapping("/search")
     public String getUserByName(@RequestParam("name") String name, Model model) {
-        users user = usersService.getUserByName(name);
-        model.addAttribute("users", List.of(user));
+        List<users> users = usersService.getUsersByName(name);
+        model.addAttribute("users", users);
         return "users";
     }
 
