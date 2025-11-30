@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.finesMapper">
+    <select id="getFineById" resultType="com.example.demo.domain.fines">
+        SELECT * FROM fines WHERE fineID = #{fineID}
+    </select>
+
+    <select id="getAllFines" resultType="com.example.demo.domain.fines">
+        SELECT * FROM fines
+    </select>
+
+    <select id="getFinesByBorrowId" parameterType="int" resultType="com.example.demo.domain.fines">
+        SELECT * FROM fines WHERE BorrowID = #{borrowId}
+    </select>
+
+    <insert id="insertFine">
+        INSERT INTO fines (borrowID, amount, fineDate)
+        VALUES (#{borrowID}, #{amount}, #{fineDate})
+    </insert>
+
+    <update id="updateFine">
+        UPDATE fines
+        SET borrowID = #{borrowID}, amount = #{amount}, fineDate = #{fineDate}
+        WHERE fineID = #{fineID}
+    </update>
+
+    <delete id="deleteFine">
+        DELETE FROM fines WHERE fineID = #{fineID}
+    </delete>
+</mapper>

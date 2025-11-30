@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Reservations</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Reservations</h1>
+<section>
+  <form action="/reservations/search" method="get">
+    <input type="text" name="userID" placeholder="Enter User ID to search"/>
+    <button type="submit">Search</button>
+  </form>
+</section>
+<div th:if="${reservations == null}">
+  <p>You don't have a reservation.</p>
+</div>
+<table th:if="${reservations != null}">
+  <thead>
+  <tr>
+    <th>ReservationID</th>
+    <th>UserID</th>
+    <th>BookID</th>
+    <th>Reservation Date</th>
+    <th>Status</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="reservation : ${reservations}">
+    <td th:text="${reservation.reservationID}"></td>
+    <td th:text="${reservation.userID}"></td>
+    <td th:text="${reservation.bookID}"></td>
+    <td th:text="${reservation.reservationDate}"></td>
+    <td th:text="${reservation.status}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

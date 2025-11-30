@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>All Books</h1>
+<form action="/books/search" method="get">
+    <input type="text" name="categoryID" placeholder="Enter Category ID">
+    <button type="submit">Search</button>
+</form>
+<a th:href="@{/books/add}">Add a New Book</a>
+<table border="1">
+    <thead>
+    <tr>
+        <th>BookID</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Published Date</th>
+        <th>ISBN</th>
+        <th>CategoryID</th>
+        <th>Available Copies</th>
+        <th>Category Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.bookID}"></td>
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.publishedDate}"></td>
+        <td th:text="${book.isbn}"></td>
+        <td th:text="${book.categoryID}"></td>
+        <td th:text="${book.availableCopies}"></td>
+        <td th:text="${book.categoryName}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+

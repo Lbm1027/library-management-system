@@ -1,0 +1,42 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.usersMapper">
+    <select id="getUserById" parameterType="int" resultType="com.example.demo.domain.users">
+        SELECT * FROM users WHERE userID = #{userID}
+    </select>
+
+    <select id="getAllUsers" resultType="com.example.demo.domain.users">
+        SELECT * FROM users
+    </select>
+
+    <select id="getUsersByName" parameterType="String" resultType="com.example.demo.domain.users">
+        SELECT * FROM users WHERE name = #{name}
+    </select>
+
+    <insert id="insertUser" parameterType="com.example.demo.domain.users">
+        INSERT INTO users (name, email, phone, membershipType)
+        VALUES (#{name}, #{email}, #{phone}, #{membershipType})
+    </insert>
+
+    <update id="updateUser" parameterType="com.example.demo.domain.users">
+        UPDATE users
+        SET name=#{name}, email=#{email}, phone=#{phone}, membershipType=#{membershipType}
+        WHERE userID = #{userID}
+    </update>
+
+    <update id="updateMembershipType" parameterType="map">
+        UPDATE users
+        SET membershipType = #{membershipType}
+        WHERE userID = #{userID}
+    </update>
+
+    <delete id="deleteUser" parameterType="int">
+        DELETE FROM users WHERE userID = #{userID}
+    </delete>
+
+    <select id="getUserByName" parameterType="String" resultType="com.example.demo.domain.users">
+        SELECT * FROM users WHERE name = #{name}
+    </select>
+</mapper>

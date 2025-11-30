@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.booksMapper">
+
+    <select id="getBookById" parameterType="int" resultType="com.example.demo.domain.books">
+        SELECT * FROM books WHERE bookID = #{bookID}
+    </select>
+
+    <select id="getAllBooks" resultType="com.example.demo.domain.books">
+        SELECT * FROM books ORDER BY bookID
+    </select>
+
+    <select id="getBooksByCategoryId" parameterType="int" resultType="com.example.demo.domain.VO.BooksCategoriesVO">
+        SELECT b.*, c.categoryName
+        FROM books b
+        LEFT JOIN categories c ON b.categoryID = c.categoryID
+        WHERE c.categoryID = #{categoryID}
+        ORDER BY bookID
+    </select>
+
+    <select id="getBookByTitle" parameterType="String" resultType="com.example.demo.domain.books">
+        SELECT * FROM books WHERE title = #{title}
+    </select>
+
+    <insert id="insertBook" parameterType="com.example.demo.domain.books">
+        INSERT INTO books (title, author, categoryID, publishedDate, isbn, availableCopies)
+        VALUES (#{title}, #{author}, #{categoryID}, #{publishedDate}, #{isbn}, #{availableCopies})
+    </insert>
+
+    <update id="updateBook" parameterType="com.example.demo.domain.books">
+        UPDATE books
+        SET title=#{title}, author=#{author}, categoryID=#{categoryID}, publishedDate=#{publishedDate}, isbn=#{isbn}, availableCopies=#{availableCopies}
+        WHERE bookID = #{bookID}
+    </update>
+
+    <delete id="deleteBook" parameterType="int">
+        DELETE FROM books WHERE bookID = #{bookID}
+    </delete>
+
+    <select id="countBooksByCategoryId" parameterType="int" resultType="int">
+        SELECT COUNT(*) FROM books WHERE categoryID = #{categoryID}
+    </select>
+
+    <select id="getAllBooksWithCategories" resultType="com.example.demo.domain.VO.BooksCategoriesVO">
+        SELECT b.*, c.categoryName
+        FROM books b
+                 LEFT JOIN categories c ON b.categoryID = c.categoryID
+        ORDER BY b.bookID
+    </select>
+
+</mapper>

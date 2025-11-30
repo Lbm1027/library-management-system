@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Borrow Records</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Borrow Records</h1>
+<section>
+  <form action="/borrowRecords/search" method="get">
+    <input type="text" name="userID" placeholder="Enter User ID to search"/>
+    <button type="submit">Search</button>
+  </form>
+</section>
+<div th:if="${borrowRecords == null}">
+  <p>You don't have a borrow record.</p>
+</div>
+<table th:if="${borrowRecords != null}">
+  <thead>
+  <tr>
+    <th>BorrowID</th>
+    <th>UserID</th>
+    <th>BookID</th>
+    <th>Borrow Date</th>
+    <th>Return Date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="borrowRecord : ${borrowRecords}">
+    <td th:text="${borrowRecord.borrowID}"></td>
+    <td th:text="${borrowRecord.userID}"></td>
+    <td th:text="${borrowRecord.bookID}"></td>
+    <td th:text="${borrowRecord.borrowDate}"></td>
+    <td th:text="${borrowRecord.returnDate}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

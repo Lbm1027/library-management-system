@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: black;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin: 20px 0;
+    }
+    .container {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+    }
+    nav {
+      margin-top: 30px;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+    }
+    nav ul li {
+      margin: 10px 0;
+    }
+    nav ul li a {
+      text-decoration: none;
+      font-size: 1.2em;
+      transition: color 0.3s;
+    }
+    nav ul li a.books {
+      color: #FF6347; /* Tomato */
+    }
+    nav ul li a.categories {
+      color: #1E90FF; /* DodgerBlue */
+    }
+    nav ul li a.users {
+      color: #32CD32; /* LimeGreen */
+    }
+    nav ul li a.reservations {
+      color: #FFD700; /* Gold */
+    }
+    nav ul li a.borrowRecords {
+      color: #FF69B4; /* HotPink */
+    }
+    nav ul li a.fines {
+      color: #8A2BE2; /* BlueViolet */
+    }
+    nav ul li a:hover {
+      color: #333;
+    }
+    .author-container {
+      text-align: center;
+    }
+    .author-image {
+      width: 150px;
+      height: auto;
+      border-radius: 50%;
+    }
+    .author-title {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-top: 10px;
+      color: #333;
+    }
+    .background-image {
+      background-image: url('/images/ac3e0495-69be-4885-8ee2-32da2c7a8b62.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 400px; /* Adjust the height as needed */
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Welcome to the SmartLIB</h1>
+</header>
+
+<div class="container">
+  <nav>
+    <ul>
+      <li><a href="/books" class="books">Books</a></li>
+      <li><a href="/categories" class="categories">Categories</a></li>
+      <li><a href="/users" class="users">Users</a></li>
+      <li><a href="/reservations" class="reservations">Reservations</a></li>
+      <li><a href="/borrowRecords" class="borrowRecords">Borrow Records</a></li>
+      <li><a href="/fines" class="fines">Fines</a></li>
+    </ul>
+  </nav>
+
+  <div class="author-container">
+    <img src="/images/微信图片_20240727140224.jpg" alt="Author" class="author-image"/>
+    <div class="author-title">Author: Beiming Lian</div>
+  </div>
+</div>
+
+<div class="background-image"></div>
+
+</body>
+</html>

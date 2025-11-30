@@ -1,0 +1,36 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.reservationsMapper">
+    <select id="getReservationById" parameterType="int" resultType="com.example.demo.domain.reservations">
+        SELECT * FROM reservations WHERE reservationID = #{reservationID}
+    </select>
+
+    <select id="getAllReservations" resultType="com.example.demo.domain.reservations">
+        SELECT * FROM reservations
+    </select>
+
+    <select id="getReservationsByUserId" parameterType="int" resultType="com.example.demo.domain.reservations">
+        SELECT * FROM reservations WHERE userID = #{userID}
+    </select>
+
+    <select id="getReservationsByBookId" parameterType="int" resultType="com.example.demo.domain.reservations">
+        SELECT * FROM reservations WHERE bookID = #{bookID}
+    </select>
+
+    <insert id="insertReservation" parameterType="com.example.demo.domain.reservations">
+        INSERT INTO reservations (userID, bookID, reservationDate, status)
+        VALUES (#{userID}, #{bookID}, #{reservationDate}, #{status})
+    </insert>
+
+    <update id="updateReservation" parameterType="com.example.demo.domain.reservations">
+        UPDATE reservations
+        SET userID=#{userID}, bookID=#{bookID}, reservationDate=#{reservationDate}, status=#{status}
+        WHERE reservationID = #{reservationID}
+    </update>
+
+    <delete id="deleteReservation" parameterType="int">
+        DELETE FROM reservations WHERE reservationID = #{reservationID}
+    </delete>
+</mapper>

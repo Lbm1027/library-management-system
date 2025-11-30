@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Users</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Users</h1>
+<section>
+  <form action="/users/search" method="get">
+    <input type="text" name="name" placeholder="Enter Name to search"/>
+    <button type="submit">Search</button>
+  </form>
+</section>
+<table>
+  <thead>
+  <tr>
+    <th>UserID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Membership Type</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="user : ${users}">
+    <td th:text="${user.userID}"></td>
+    <td th:text="${user.name}"></td>
+    <td th:text="${user.email}"></td>
+    <td th:text="${user.phone}"></td>
+    <td th:text="${user.membershipType}"></td>
+    <td>
+      <form action="/users/delete" method="post">
+        <input type="hidden" name="userID" th:value="${user.userID}"/>
+        <button type="submit">Delete</button>
+      </form>
+      <form action="/users/update" method="post">
+        <input type="hidden" name="userID" th:value="${user.userID}"/>
+        <input type="text" name="membershipType" placeholder="Update Membership Type" th:value="${user.membershipType}"/>
+        <button type="submit">Update</button>
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

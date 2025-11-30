@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Fines Management</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>Fines Management</h1>
+
+<section>
+  <h2>Search Fines by Borrow ID</h2>
+  <form action="/fines/search" method="get">
+    <input type="text" name="borrowID" placeholder="Enter Borrow ID"/>
+    <button type="submit">Search</button>
+  </form>
+</section>
+
+<section th:if="${fines != null}">
+  <h2>Fines</h2>
+  <table border="1">
+    <thead>
+    <tr>
+      <th>FineID</th>
+      <th>BorrowID</th>
+      <th>Amount</th>
+      <th>Fine Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="fine : ${fines}">
+      <td th:text="${fine.fineID}">FineID</td>
+      <td th:text="${fine.borrowID}">BorrowID</td>
+      <td th:text="${fine.amount}">Amount</td>
+      <td th:text="${fine.fineDate}">Fine Date</td>
+    </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Add New Fine</h2>
+  <form action="/fines/add" method="post">
+    <label for="borrowID">Borrow ID:</label>
+    <input type="text" id="borrowID" name="borrowID" required/>
+    <label for="amount">Amount:</label>
+    <input type="text" id="amount" name="amount" required/>
+    <button type="submit">Add Fine</button>
+  </form>
+</section>
+
+</body>
+</html>

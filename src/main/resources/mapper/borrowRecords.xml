@@ -1,0 +1,33 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.borrowRecordsMapper">
+
+    <select id="getBorrowRecordById" resultType="com.example.demo.domain.borrowRecords">
+        SELECT * FROM borrowrecords WHERE BorrowID = #{borrowID}
+    </select>
+
+    <select id="getAllBorrowRecords" resultType="com.example.demo.domain.borrowRecords">
+        SELECT * FROM borrowrecords
+    </select>
+
+    <select id="getBorrowRecordsByUserId" resultType="com.example.demo.domain.borrowRecords">
+        SELECT * FROM borrowrecords WHERE UserID = #{userID}
+    </select>
+
+    <select id="getBorrowRecordsByBookId" resultType="com.example.demo.domain.borrowRecords">
+        SELECT * FROM borrowrecords WHERE BookID = #{bookID}
+    </select>
+
+    <insert id="insertBorrowRecord">
+        INSERT INTO borrowrecords (UserID, BookID, BorrowDate, ReturnDate) VALUES (#{userID}, #{bookID}, #{borrowDate}, #{returnDate})
+    </insert>
+
+    <update id="updateBorrowRecord">
+        UPDATE borrowrecords SET UserID = #{userID}, BookID = #{bookID}, BorrowDate = #{borrowDate}, ReturnDate = #{returnDate} WHERE BorrowID = #{borrowID}
+    </update>
+
+    <delete id="deleteBorrowRecord">
+        DELETE FROM borrowrecords WHERE BorrowID = #{borrowID}
+    </delete>
+
+</mapper>
