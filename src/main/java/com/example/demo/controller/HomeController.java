@@ -12,5 +12,11 @@ public class HomeController {
     }
 
 
+    @GetMapping("/instructions")
+    public String instructions() {
+        return "instructions";
+    }
+
+
 }
 

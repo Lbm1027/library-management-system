@@ -10,7 +10,7 @@ import java.util.List;
 public interface booksMapper {
     books getBookById(int bookID);
     List<books> getAllBooks();
-    List<BooksCategoriesVO> getBooksByCategoryId(int categoryID);
+    List<BooksCategoriesVO> getBooksByCategoryName(String categoryName);
     books getBookByTitle(String title);
     void insertBook(books book);
     void updateBook(books book);

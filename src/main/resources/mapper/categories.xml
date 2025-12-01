@@ -13,4 +13,8 @@
     <delete id="deleteCategory">
         DELETE FROM categories WHERE categoryID = #{categoryID}
     </delete>
+
+    <select id="countCategoryById" parameterType="int" resultType="int">
+        SELECT COUNT(*) FROM categories WHERE categoryID = #{categoryID}
+    </select>
 </mapper>
