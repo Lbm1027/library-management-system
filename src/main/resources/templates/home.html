@@ -21,6 +21,7 @@
     h1 {
       font-size: 2.5em;
       margin: 20px 0;
+      color: white;
     }
     .container {
       display: flex;
@@ -38,30 +39,14 @@
       margin: 10px 0;
     }
     nav ul li a {
-      text-decoration: none;
+      text-decoration: underline;
       font-size: 1.2em;
+      font-weight: 700;
+      color: #1e88e5;
       transition: color 0.3s;
     }
-    nav ul li a.books {
-      color: #FF6347; /* Tomato */
-    }
-    nav ul li a.categories {
-      color: #1E90FF; /* DodgerBlue */
-    }
-    nav ul li a.users {
-      color: #32CD32; /* LimeGreen */
-    }
-    nav ul li a.reservations {
-      color: #FFD700; /* Gold */
-    }
-    nav ul li a.borrowRecords {
-      color: #FF69B4; /* HotPink */
-    }
-    nav ul li a.fines {
-      color: #8A2BE2; /* BlueViolet */
-    }
     nav ul li a:hover {
-      color: #333;
+      color: #0d47a1;
     }
     .author-container {
       text-align: center;
@@ -88,21 +73,24 @@
 </head>
 <body>
 
+<a href="/" class="home-link">Home</a>
+
 <header>
   <h1>Welcome to the SmartLIB</h1>
 </header>
 
 <div class="container">
-  <nav>
-    <ul>
-      <li><a href="/books" class="books">Books</a></li>
-      <li><a href="/categories" class="categories">Categories</a></li>
-      <li><a href="/users" class="users">Users</a></li>
-      <li><a href="/reservations" class="reservations">Reservations</a></li>
-      <li><a href="/borrowRecords" class="borrowRecords">Borrow Records</a></li>
-      <li><a href="/fines" class="fines">Fines</a></li>
-    </ul>
-  </nav>
+    <nav>
+      <ul>
+        <li><a href="/books" class="books">Books</a></li>
+        <li><a href="/categories" class="categories">Categories</a></li>
+        <li><a href="/users" class="users">Users</a></li>
+        <li><a href="/reservations" class="reservations">Reservations</a></li>
+        <li><a href="/borrowRecords" class="borrowRecords">Borrow Records</a></li>
+        <li><a href="/fines" class="fines">Fines</a></li>
+        <li><a href="/instructions" class="instructions">Instructions</a></li>
+      </ul>
+    </nav>
 
   <div class="author-container">
     <img src="/images/微信图片_20240727140224.jpg" alt="Author" class="author-image"/>

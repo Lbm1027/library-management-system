@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Instructions</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: black;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.2em;
+      margin: 20px 0;
+    }
+    .container {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+    }
+    nav {
+      margin-top: 30px;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+    }
+    nav ul li {
+      margin: 10px 0;
+    }
+    nav ul li a {
+      text-decoration: none;
+      font-size: 1.1em;
+      transition: color 0.3s;
+    }
+    nav ul li a.books { color: #FF6347; }
+    nav ul li a.categories { color: #1E90FF; }
+    nav ul li a.users { color: #32CD32; }
+    nav ul li a.reservations { color: #FFD700; }
+    nav ul li a.borrowRecords { color: #FF69B4; }
+    nav ul li a.fines { color: #8A2BE2; }
+    nav ul li a.instructions { color: #333; font-weight: bold; }
+    nav ul li a:hover { color: #000; }
+    .content {
+      max-width: 800px;
+      margin: 0 auto 40px auto;
+      padding: 0 20px;
+      line-height: 1.6;
+    }
+    .content h2 { margin-top: 0; }
+    .note {
+      background: #fff8e1;
+      border-left: 4px solid #ff9800;
+      padding: 12px 16px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+
+<a href="/" class="home-link">Home</a>
+
+<header>
+  <h1>How to use SmartLIB</h1>
+</header>
+
+<div class="container">
+  <nav>
+    <ul>
+      <li><a href="/books" class="books">Books</a></li>
+      <li><a href="/categories" class="categories">Categories</a></li>
+      <li><a href="/users" class="users">Users</a></li>
+      <li><a href="/reservations" class="reservations">Reservations</a></li>
+      <li><a href="/borrowRecords" class="borrowRecords">Borrow Records</a></li>
+      <li><a href="/fines" class="fines">Fines</a></li>
+      <li><a href="/instructions" class="instructions">Instructions</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="content">
+  <h2>Main features</h2>
+  <p>
+    The <strong>Books</strong>, <strong>Categories</strong>, and <strong>Users</strong> pages are the primary focus of this demo.
+    Each of these pages supports full Create, Read (from the database), Update (user updates depend on membership type),
+    and Delete operations.
+  </p>
+
+  <div class="note">
+    <strong>Tip:</strong> Reservations and borrow records are searched using a <strong>user ID</strong>.
+    Visit the <a href="/users">Users</a> page first to find the ID you need, then run searches on the Reservations or Borrow Records pages.
+  </div>
+
+  <h3>Other pages</h3>
+  <p>
+    The remaining pages—Reservations, Borrow Records, and Fines—are included for fun demonstrations.
+    Some results (for example, reservation and record searches) are fixed in the database.
+    To change them, update the underlying data directly.
+  </p>
+</div>
+
+</body>
+</html>
