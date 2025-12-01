@@ -44,8 +44,8 @@ public class booksController {
                           @RequestParam String author,
                           @RequestParam("publishedDate") String publishedDateString,
                           @RequestParam String isbn,
-                          @RequestParam int categoryID,
-                          @RequestParam int availableCopies,
+                          @RequestParam String categoryID,
+                          @RequestParam String availableCopies,
                           Model model) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         LocalDate parsedDate;
@@ -56,8 +56,29 @@ public class booksController {
             return "bookAddError";
         }
 
-        if (!categoriesService.categoryExists(categoryID)) {
+        int parsedCategoryId;
+        try {
+            parsedCategoryId = Integer.parseInt(categoryID);
+        } catch (NumberFormatException e) {
+            model.addAttribute("errorMessage", "Category ID must be a valid number.");
+            return "bookAddError";
+        }
+
+        if (!categoriesService.categoryExists(parsedCategoryId)) {
             model.addAttribute("errorMessage", "No such category ID. Please choose an existing category.");
+            return "bookAddError";
+        }
+
+        int parsedAvailableCopies;
+        try {
+            parsedAvailableCopies = Integer.parseInt(availableCopies);
+        } catch (NumberFormatException e) {
+            model.addAttribute("errorMessage", "Available copies must be a valid number.");
+            return "bookAddError";
+        }
+
+        if (parsedAvailableCopies < 0) {
+            model.addAttribute("errorMessage", "Available copies cannot be negative.");
             return "bookAddError";
         }
         books book = new books();
@@ -65,8 +86,8 @@ public class booksController {
         book.setAuthor(author);
         book.setPublishedDate(Date.valueOf(parsedDate));
         book.setIsbn(isbn);
-        book.setCategoryID(categoryID);
-        book.setAvailableCopies(availableCopies);
+        book.setCategoryID(parsedCategoryId);
+        book.setAvailableCopies(parsedAvailableCopies);
         booksService.insertBook(book);
         return "redirect:/books";
     }

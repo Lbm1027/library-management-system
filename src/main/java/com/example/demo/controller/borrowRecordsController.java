@@ -22,9 +22,18 @@ public class borrowRecordsController {
     }
 
     @GetMapping("/search")
-    public String getBorrowRecordsByUserId(@RequestParam("userID") int userID, Model model) {
-        List<borrowRecords> borrowRecords = borrowRecordsService.getBorrowRecordsByUserId(userID);
-        model.addAttribute("borrowRecords", borrowRecords);
+    public String getBorrowRecordsByUserId(@RequestParam(value = "userID", required = false) String userID, Model model) {
+        if (userID == null || userID.trim().isEmpty()) {
+            model.addAttribute("errorMessage", "User ID is required to search borrow records.");
+            return "borrowRecords";
+        }
+        try {
+            int parsedUserId = Integer.parseInt(userID.trim());
+            List<borrowRecords> borrowRecords = borrowRecordsService.getBorrowRecordsByUserId(parsedUserId);
+            model.addAttribute("borrowRecords", borrowRecords);
+        } catch (NumberFormatException e) {
+            model.addAttribute("errorMessage", "User ID must be a valid number.");
+        }
         return "borrowRecords";
     }
 }
