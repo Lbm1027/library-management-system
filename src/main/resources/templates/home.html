@@ -21,6 +21,7 @@
     h1 {
       font-size: 2.5em;
       margin: 20px 0;
+      color: white;
     }
     .container {
       display: flex;
@@ -38,34 +39,14 @@
       margin: 10px 0;
     }
     nav ul li a {
-      text-decoration: none;
+      text-decoration: underline;
       font-size: 1.2em;
+      font-weight: 700;
+      color: #1e88e5;
       transition: color 0.3s;
     }
-    nav ul li a.books {
-      color: #FF6347; /* Tomato */
-    }
-    nav ul li a.categories {
-      color: #1E90FF; /* DodgerBlue */
-    }
-    nav ul li a.users {
-      color: #32CD32; /* LimeGreen */
-    }
-    nav ul li a.reservations {
-      color: #FFD700; /* Gold */
-    }
-    nav ul li a.borrowRecords {
-      color: #FF69B4; /* HotPink */
-    }
-    nav ul li a.fines {
-      color: #8A2BE2; /* BlueViolet */
-    }
-    nav ul li a.instructions {
-      color: #333;
-      font-weight: bold;
-    }
     nav ul li a:hover {
-      color: #333;
+      color: #0d47a1;
     }
     .author-container {
       text-align: center;
@@ -91,6 +72,8 @@
   </style>
 </head>
 <body>
+
+<a href="/" class="home-link">Home</a>
 
 <header>
   <h1>Welcome to the SmartLIB</h1>
