@@ -10,4 +10,5 @@ public interface categoriesMapper {
     List<categories> getAllCategories();
     void insertCategory(categories category);
     void deleteCategory(int categoryID);
+    int countCategoryById(int categoryID);
 }

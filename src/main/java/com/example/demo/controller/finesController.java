@@ -22,9 +22,18 @@ public class finesController {
     }
 
     @GetMapping("/search")
-    public String getFinesByBorrowId(@RequestParam("borrowID") int borrowID, Model model) {
-        List<fines> fines = finesService.getFinesByBorrowId(borrowID);
-        model.addAttribute("fines", fines);
+    public String getFinesByBorrowId(@RequestParam(value = "borrowID", required = false) String borrowID, Model model) {
+        if (borrowID == null || borrowID.trim().isEmpty()) {
+            model.addAttribute("errorMessage", "Borrow ID is required to search fines.");
+            return "fines";
+        }
+        try {
+            int parsedBorrowId = Integer.parseInt(borrowID.trim());
+            List<fines> fines = finesService.getFinesByBorrowId(parsedBorrowId);
+            model.addAttribute("fines", fines);
+        } catch (NumberFormatException e) {
+            model.addAttribute("errorMessage", "Borrow ID must be a valid number.");
+        }
         return "fines";
     }
 

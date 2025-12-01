@@ -15,6 +15,7 @@
     <button type="submit">Search</button>
   </form>
 </section>
+<div th:if="${errorMessage}" class="error" th:text="${errorMessage}"></div>
 
 <section th:if="${fines != null}">
   <h2>Fines</h2>

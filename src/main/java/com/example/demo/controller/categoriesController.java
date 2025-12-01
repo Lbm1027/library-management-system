@@ -25,6 +25,10 @@ public class categoriesController {
 
     @PostMapping("/add")
     public String addCategory(@RequestParam("categoryName") String categoryName, Model model) {
+        if (categoryName == null || categoryName.trim().isEmpty()) {
+            model.addAttribute("errorMessage", "Category name cannot be empty.");
+            return "categoryAddError";
+        }
         categories category = new categories();
         category.setCategoryName(categoryName);
         categoriesService.insertCategory(category);
