@@ -6,7 +6,6 @@ import com.example.demo.service.booksService;
 import com.example.demo.domain.VO.BooksCategoriesVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -15,27 +14,16 @@ import java.util.List;
 public class booksServiceImpl implements booksService {
 
     @Autowired
-    private RedisTemplate<String, Object> redisTemplate;
-
-    @Autowired
     private booksMapper booksMapper;
 
     @Override
     public List<books> getAllBooks() {
-        String key = "books_all";
-
-        //Redis implements on retrieving books
-        List<books> books = (List<books>) redisTemplate.opsForValue().get(key);
-        if (books == null) {
-            books = booksMapper.getAllBooks();
-            redisTemplate.opsForValue().set(key, books);
-        }
-        return books;
+        return booksMapper.getAllBooks();
     }
 
     @Override
-    public List<BooksCategoriesVO> getBooksByCategoryId(int categoryID) {
-        return booksMapper.getBooksByCategoryId(categoryID);
+    public List<BooksCategoriesVO> getBooksByCategoryName(String categoryName) {
+        return booksMapper.getBooksByCategoryName(categoryName);
     }
 
     @Override
@@ -45,15 +33,7 @@ public class booksServiceImpl implements booksService {
 
     @Override
     public books getBookById(int bookId) {
-        String key = "book_" + bookId;
-
-        //Redis implements on searching books
-        books book = (books) redisTemplate.opsForValue().get(key);
-        if (book == null) {
-            book = booksMapper.getBookById(bookId);
-            redisTemplate.opsForValue().set(key, book);
-        }
-        return book;
+        return booksMapper.getBookById(bookId);
     }
 
     @Override
@@ -64,15 +44,9 @@ public class booksServiceImpl implements booksService {
     @Override
     @Transactional
     public void insertBook(books book) {
-
-            // Insert books to database
-            booksMapper.insertBook(book);
-            // Update Redis caches
-            redisTemplate.opsForValue().set("book_" + book.getBookID(), book);
-            // Update all book list caches
-            redisTemplate.delete("books_all");
-            redisTemplate.opsForValue().set("books_all", booksMapper.getAllBooks());
-        }
+        // Insert books to database
+        booksMapper.insertBook(book);
+    }
 
 
     @Override

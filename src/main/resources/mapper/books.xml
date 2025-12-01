@@ -12,12 +12,12 @@
         SELECT * FROM books ORDER BY bookID
     </select>
 
-    <select id="getBooksByCategoryId" parameterType="int" resultType="com.example.demo.domain.VO.BooksCategoriesVO">
+    <select id="getBooksByCategoryName" parameterType="String" resultType="com.example.demo.domain.VO.BooksCategoriesVO">
         SELECT b.*, c.categoryName
         FROM books b
-        LEFT JOIN categories c ON b.categoryID = c.categoryID
-        WHERE c.categoryID = #{categoryID}
-        ORDER BY bookID
+                 LEFT JOIN categories c ON b.categoryID = c.categoryID
+        WHERE c.categoryName LIKE CONCAT('%', #{categoryName}, '%')
+        ORDER BY b.bookID
     </select>
 
     <select id="getBookByTitle" parameterType="String" resultType="com.example.demo.domain.books">

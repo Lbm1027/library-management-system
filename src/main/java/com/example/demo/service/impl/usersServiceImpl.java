@@ -35,6 +35,11 @@ public class usersServiceImpl implements usersService {
     }
 
     @Override
+    public int getNextUserId() {
+        return usersMapper.getNextUserId();
+    }
+
+    @Override
     public void insertUser(users users) {
         usersMapper.insertUser(users);
     }
