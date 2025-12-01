@@ -13,6 +13,8 @@ public interface usersService {
 
     List<users> getUsersByName(String name);
 
+    int getNextUserId();
+
     void insertUser(users users);
 
     void updateUser(users users);

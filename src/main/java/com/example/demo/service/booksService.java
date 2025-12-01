@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface booksService {
     List<books> getAllBooks();
-    List<BooksCategoriesVO> getBooksByCategoryId(int categoryID);
+    List<BooksCategoriesVO> getBooksByCategoryName(String categoryName);
     List<BooksCategoriesVO> getAllBooksWithCategories();
     books getBookById(int bookID);
     books getBookByTitle(String title);
